@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Phone form </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Phone</h1>
+<table>
+    <thead>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Is available</th>
+    </thead>
+    <tbody>
+        <tr th:each="prod: ${phones}">
+            <td th:text="${prod.model}" align="left">Model</td>
+            <td th:text="${prod.price}" align="left">Price</td>
+            <td th:text="${prod.quantity}" align="left">Quantity</td>
+            <td th:text="${prod.isAvailable}" align="left">IsAvailable</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
