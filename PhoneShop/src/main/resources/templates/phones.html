@@ -7,18 +7,26 @@
 <h1>Phone</h1>
 <table>
     <thead>
-        <th>Model</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Is available</th>
+    <th>Model</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Color</th>
+    <th>Creation data</th>
+    <th>OS</th>
     </thead>
     <tbody>
-        <tr th:each="prod: ${phones}">
-            <td th:text="${prod.model}" align="left">Model</td>
-            <td th:text="${prod.price}" align="left">Price</td>
-            <td th:text="${prod.quantity}" align="left">Quantity</td>
-            <td th:text="${prod.isAvailable}" align="left">IsAvailable</td>
-        </tr>
+    <tr th:each="prod: ${phones}">
+        <td th:text="${prod.features.name}" align="left">Features</td>
+        <td th:text="${prod.price}" align="left">Price</td>
+        <td th:text="${prod.quantity}" align="left">Quantity</td>
+        <td th:text="${prod.color}" align="left">Color</td>
+        <td th:text="${prod.creation_data}" align="left">CreationData</td>
+        <td th:text="${prod.features.OS}" align="left">OS</td>
+        <td align="left">
+            <img src="images/black.jpg" width="300" height="300"/>
+        </td>
+
+    </tr>
     </tbody>
 </table>
 </body>

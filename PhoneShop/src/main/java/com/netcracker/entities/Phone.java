@@ -4,32 +4,41 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "phone_shop.products")
+@Table(name = "phone_shop.phones")
 @Getter
 @Setter
 public class Phone {
 
-    public Phone(){}
+    public Phone() {
+    }
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false)
-    protected Long id;
+    @Column(name = "phone_id", nullable = false)
+    private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "model_id")
+    private PhoneFeatures features;
 
-    @Column(name = "model")
-    protected String model;
-
+/*
+    @Column(name = "model_id")
+    private Long model_id;
+*/
 
     @Column(name = "price")
-    protected Double price;
+    private Double price;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "creation_data")
+    private LocalDate creation_data;
 
     @Column(name = "quantity")
-    protected Integer quantity;
-
-    @Column(name = "is_available")
-    protected Boolean isAvailable;
+    private Integer quantity;
 
 }

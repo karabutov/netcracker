@@ -3,41 +3,42 @@ package com.netcracker.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Table;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-@Table(appliesTo = "phones")
-public class PhoneFeatures extends Phone {
+@Table(name = "phone_shop.model_characteristics")
+public class PhoneFeatures {
 
-    @Column(name = "color")
-    private String color;
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "model_id", nullable = false)
+    protected Long id;
+
+    @Column(name = "model_name")
+    private String name;
+
+    @OneToOne(mappedBy = "features")
+    private Phone phone;
 
     @Column(name = "megapixels")
-    private double numOfMegapixels;
+    private Double numOfMegapixels;
 
     @Column(name = "os")
     private String OS;
 
-    @Column(name = "screen_diagonal")
+    @Column(name = "diagonal")
     private Double screenDiagonal;
-
-    @Column(name = "memory")
-    private Double memory;
-
-    @Column(name = "ram")
-    private Double RAM;
 
     @Column(name = "battery_capacity")
     private Integer batteryCapacity;
 
-    @Column(name = "year")
-    private Integer year;
+    @Column(name = "memory")
+    private Integer memory;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Column(name = "ram")
+    private Integer RAM;
+
 }
