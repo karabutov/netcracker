@@ -16,18 +16,17 @@ public class Phone {
     }
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phone_id", nullable = false)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "model_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "model")
     private PhoneFeatures features;
 
-/*
-    @Column(name = "model_id")
-    private Long model_id;
-*/
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "phone_id")
+    private Picture pictures ;//= new ArrayList<>();
 
     @Column(name = "price")
     private Double price;

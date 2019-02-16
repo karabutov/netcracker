@@ -3,9 +3,11 @@ package com.netcracker.services;
 import com.netcracker.dao.PhoneDAOImpl;
 import com.netcracker.data.DataGenerator;
 import com.netcracker.entities.Phone;
+import com.netcracker.entities.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,7 +21,8 @@ public class ShopService {
         phoneDAO.addPhone(phone);
     }
 
-    public void deletePhone(Phone phone){
+    public void deletePhone(Long id){
+        Phone phone = phoneDAO.findPhoneById(id);
         phoneDAO.deletePhone(phone);
     }
 
@@ -27,11 +30,20 @@ public class ShopService {
         return phoneDAO.findAllPhones();
     }
 
-    public void addPhones(){
+    public void addPhones() throws Exception{
+
+        DataGenerator dataGenerator = new DataGenerator();
+        List<Picture> pictures = dataGenerator.getPictures();
+        for(Picture pic : pictures){
+            phoneDAO.addPicture(pic);
+        }
+
+
+        /*
         List<Phone> phones = DataGenerator.getPhones();
         for(Phone p : phones) {
             phoneDAO.addPhone(p);
-        }
+        }*/
     }
 
     public void deletePhones(){

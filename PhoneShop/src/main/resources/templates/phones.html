@@ -2,6 +2,8 @@
 <head>
     <title>Phone form </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/static/css/styles.css" />
 </head>
 <body>
 <h1>Phone</h1>
@@ -22,12 +24,19 @@
         <td th:text="${prod.color}" align="left">Color</td>
         <td th:text="${prod.creation_data}" align="left">CreationData</td>
         <td th:text="${prod.features.OS}" align="left">OS</td>
-        <td align="left">
-            <img src="images/black.jpg" width="300" height="300"/>
+        <td>
+            <img width="90" height="90"
+                 th:src="@{'data:image/jpeg;base64,'+${prod.pictures.encodeImage()}}"/>
         </td>
-
+        <td>
+            <a th:href="@{/deletephone(phoneId=${prod.getId()})}"
+               onClick="return confirm('Delete this phone?')">Delete</a>
+        </td>
     </tr>
     </tbody>
+
+    <a th:href="@{/newphone}">Добавить новый телефон</a>
+
 </table>
 </body>
 </html>

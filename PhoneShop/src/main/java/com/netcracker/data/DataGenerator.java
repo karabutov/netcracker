@@ -2,8 +2,13 @@ package com.netcracker.data;
 
 import com.netcracker.entities.Phone;
 import com.netcracker.entities.PhoneFeatures;
+import com.netcracker.entities.Picture;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +17,7 @@ public class DataGenerator {
 
     static private List<Phone> phones = new ArrayList<>();
     static private List<PhoneFeatures> features = new ArrayList<>();
+    static private List<Picture> pictures = new ArrayList<>();
 
     static {
 
@@ -32,7 +38,6 @@ public class DataGenerator {
         f1.setRAM(8);
         f1.setScreenDiagonal(5.8);
         f1.setName("iPhone X");
-
 
         Phone p2 = new Phone();
         p2.setColor("white");
@@ -88,6 +93,30 @@ public class DataGenerator {
 
     public static List<PhoneFeatures> getFeatures(){
         return features;
+    }
+
+    public List<Picture> getPictures() throws URISyntaxException, IOException {
+        Picture pic1 = new Picture();
+        pic1.setId(1L);
+        //pic1.setPhoneId(1L);
+        pic1.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/templates/images/black.jpg").toURI())));
+
+        Picture pic2 = new Picture();
+        pic2.setId(2L);
+       // pic2.setPhoneId(2L);
+        pic2.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/templates/images/white.jpg").toURI())));
+
+        Picture pic3 = new Picture();
+        pic3.setId(3L);
+        //pic3.setPhoneId(3L);
+        pic3.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/templates/images/yellow.jpg").toURI())));
+
+        List<Picture> pictures = new ArrayList<>();
+        pictures.add(pic1);
+        pictures.add(pic2);
+        pictures.add(pic3);
+
+        return pictures;
     }
 }
 

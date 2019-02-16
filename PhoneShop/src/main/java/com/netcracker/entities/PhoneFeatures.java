@@ -13,8 +13,8 @@ import javax.persistence.*;
 public class PhoneFeatures {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "model_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "model_id")
     protected Long id;
 
     @Column(name = "model_name")

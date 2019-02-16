@@ -21,9 +21,10 @@ public class Account {
     @OneToOne(mappedBy = "account")
     private Customer customer;
 
-    private List<Replenishment> replenishments;
+//    private List<Replenishment> replenishments;
 
-    private List<Order> orders;
+//    @OneToMany(targetEntity=Order.class, mappedBy="college", fetch=FetchType.EAGER)
+//    private List<Order> orders;
 
     private Double curSum;
 
