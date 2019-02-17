@@ -4,6 +4,7 @@ import com.netcracker.entities.Phone;
 import com.netcracker.forms.PhoneForm;
 import com.netcracker.services.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,11 +17,16 @@ import java.net.URISyntaxException;
 @Controller
 public class AddPhoneController {
 
+    @Value("${images.dir.path}")
+    private String imagesPath;
+
     @Autowired
     ShopService service;
 
+
     @RequestMapping("/newphone")
-    String newPhone(){
+    String newPhone(Model model){
+        model.addAttribute("phoneForm", new PhoneForm());
         return "newphone";
     }
 

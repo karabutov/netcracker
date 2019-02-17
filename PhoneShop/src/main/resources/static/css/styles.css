@@ -1,12 +1,25 @@
-/* CSS by GenerateCSS.com */
-a {color: #ffffff;
+
+
+.deletebutton {
+color: #fff; 
+background: #FFA500; 
+padding: 5px; 
+border-radius: 5px;
+border: 2px solid #FF8247;
+} 
+
+.deletebutton:hover {
+background: #FF6347; 
+}
+
+.modifylink {color: #ffffff;
 font-weight: normal;
 text-decoration: none;
 background-color: #b34040;
 padding: 10px;
 margin: 0px;}
 
-a:hover {color: #000000;
+.modifylink:hover {color: #000000;
 font-weight: normal;
 text-decoration: none;
 cursor: auto;

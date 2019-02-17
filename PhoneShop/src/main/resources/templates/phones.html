@@ -2,8 +2,7 @@
 <head>
     <title>Phone form </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all"
-          href="/static/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" >
 </head>
 <body>
 <h1>Phone</h1>
@@ -29,8 +28,14 @@
                  th:src="@{'data:image/jpeg;base64,'+${prod.pictures.encodeImage()}}"/>
         </td>
         <td>
-            <a th:href="@{/deletephone(phoneId=${prod.getId()})}"
-               onClick="return confirm('Delete this phone?')">Delete</a>
+            <button class="deletebutton"
+            th:onclick="@{'location.href='+'\'/deletephone?phoneId='+${prod.getId()}+'\''}">
+                Delete
+            </button>
+        </td>
+        <td>
+            <a th:href="@{/modifayphone(phoneId=${prod.getId()})}"
+               class="modifylink">Modify</a>
         </td>
     </tr>
     </tbody>

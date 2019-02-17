@@ -16,8 +16,8 @@ public class Phone {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "phone_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "phone_id")
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)

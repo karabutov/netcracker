@@ -3,6 +3,10 @@ package com.netcracker.forms;
 import com.netcracker.entities.Phone;
 import com.netcracker.entities.PhoneFeatures;
 import com.netcracker.entities.Picture;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +15,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 
+@Component
+@RequiredArgsConstructor
+@Getter
+@Setter
 public class PhoneForm {
 
     private String modelName;
@@ -35,6 +43,7 @@ public class PhoneForm {
 
     private Integer quantity;
 
+
     public Phone getPhone() throws URISyntaxException, IOException {
         Phone phone = new Phone();
         phone.setCreation_data(LocalDate.now());
@@ -53,12 +62,11 @@ public class PhoneForm {
         phoneFeatures.setPhone(phone);
 
         Picture picture = new Picture();
-        picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource(pictures.getPath()).toURI())));
+        picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/images/empty.jpg").toURI())));
 
         phone.setPictures(picture);
 
         return phone;
-
     }
 
 }
