@@ -1,12 +1,13 @@
 package com.netcracker.forms;
 
 import com.netcracker.entities.Phone;
-import com.netcracker.entities.PhoneFeatures;
+import com.netcracker.entities.PhoneModel;
 import com.netcracker.entities.Picture;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class PhoneForm {
     private Integer RAM;
 
     private File pictures ;
+   //private MultipartFile picture;
 
     private Double price;
 
@@ -44,29 +46,48 @@ public class PhoneForm {
     private Integer quantity;
 
 
-    public Phone getPhone() throws URISyntaxException, IOException {
+
+    private final static String IMAGES = "/images/";
+
+    public Phone getPhone(PhoneModel model) {
         Phone phone = new Phone();
         phone.setCreation_data(LocalDate.now());
         phone.setColor(color);
         phone.setPrice(price);
         phone.setQuantity(quantity);
-
-        PhoneFeatures phoneFeatures = new PhoneFeatures();
-        phoneFeatures.setName(modelName);
-        phoneFeatures.setScreenDiagonal(screenDiagonal);
-        phoneFeatures.setOS(OS);
-        phoneFeatures.setBatteryCapacity(batteryCapacity);
-        phoneFeatures.setMemory(memory);
-        phoneFeatures.setNumOfMegapixels(numOfMegapixels);
-        phoneFeatures.setRAM(RAM);
-        phoneFeatures.setPhone(phone);
-
-        Picture picture = new Picture();
-        picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/images/empty.jpg").toURI())));
-
-        phone.setPictures(picture);
-
+        phone.setModel(model);
+        phone.setPictures(getPicture());
         return phone;
+    }
+
+    public PhoneModel getPhoneModel(){
+        PhoneModel PhoneModel = new PhoneModel();
+        PhoneModel.setName(modelName);
+        PhoneModel.setScreenDiagonal(screenDiagonal);
+        PhoneModel.setOS(OS);
+        PhoneModel.setBatteryCapacity(batteryCapacity);
+        PhoneModel.setMemory(memory);
+        PhoneModel.setNumOfMegapixels(numOfMegapixels);
+        PhoneModel.setRAM(RAM);
+        return PhoneModel;
+    }
+
+    public Picture getPicture() {
+        Picture picture = new Picture();
+        String name = pictures.getName();
+      /*  name = pictures.getOriginalFilename();
+        name = IMAGES + pictures.getName();
+        pictures.transferTo(new File(IMAGES + pictures.getName()));
+    */
+        try {
+            picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/images/empty.jpg").toURI())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return picture;
     }
 
 }

@@ -17,15 +17,15 @@ import java.util.Base64;
 public class Picture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "picture_id")
     private Long id;
 
-/*
+
     @OneToOne
     @JoinColumn(name = "phone_id")
     private Phone phone;
-*/
+
 
     @Column(name = "picture")
     private byte[] pictureBin;

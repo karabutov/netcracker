@@ -1,7 +1,7 @@
 package com.netcracker.utils;
 
 import com.netcracker.entities.Phone;
-import com.netcracker.entities.PhoneFeatures;
+import com.netcracker.entities.PhoneModel;
 import com.netcracker.entities.Picture;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,7 +21,7 @@ public class SessionFactoryUtil {
 //            try {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(Phone.class);
-                configuration.addAnnotatedClass(PhoneFeatures.class);
+                configuration.addAnnotatedClass(PhoneModel.class);
                 configuration.addAnnotatedClass(Picture.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());

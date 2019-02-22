@@ -1,7 +1,7 @@
 package com.netcracker.data;
 
 import com.netcracker.entities.Phone;
-import com.netcracker.entities.PhoneFeatures;
+import com.netcracker.entities.PhoneModel;
 import com.netcracker.entities.Picture;
 
 import java.awt.image.BufferedImage;
@@ -16,7 +16,7 @@ import java.util.List;
 public class DataGenerator {
 
     static private List<Phone> phones = new ArrayList<>();
-    static private List<PhoneFeatures> features = new ArrayList<>();
+    static private List<PhoneModel> features = new ArrayList<>();
     static private List<Picture> pictures = new ArrayList<>();
 
     static {
@@ -29,7 +29,7 @@ public class DataGenerator {
         p1.setQuantity(20);
         p1.setId(1L);
 
-        PhoneFeatures f1 = new PhoneFeatures();
+        PhoneModel f1 = new PhoneModel();
         f1.setId(1L);
         f1.setBatteryCapacity(4000);
         f1.setMemory(64);
@@ -47,7 +47,7 @@ public class DataGenerator {
         p2.setQuantity(17);
         p2.setId(2L);
 
-        PhoneFeatures f2 = new PhoneFeatures();
+        PhoneModel f2 = new PhoneModel();
         f2.setId(2L);
         f2.setBatteryCapacity(5000);
         f2.setMemory(128);
@@ -66,7 +66,7 @@ public class DataGenerator {
         p3.setQuantity(8);
         p3.setId(3L);
 
-        PhoneFeatures f3 = new PhoneFeatures();
+        PhoneModel f3 = new PhoneModel();
         f3.setId(3L);
         f3.setBatteryCapacity(2500);
         f3.setMemory(32);
@@ -91,7 +91,7 @@ public class DataGenerator {
         return phones;
     }
 
-    public static List<PhoneFeatures> getFeatures(){
+    public static List<PhoneModel> getFeatures(){
         return features;
     }
 

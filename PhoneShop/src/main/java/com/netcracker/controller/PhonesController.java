@@ -2,12 +2,11 @@ package com.netcracker.controller;
 
 import com.netcracker.entities.Phone;
 import com.netcracker.repositories.PhoneRepository;
-import com.netcracker.services.ShopService;
+import com.netcracker.services.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -16,13 +15,13 @@ import java.util.List;
 @RequestMapping
 public class PhonesController {
 
-    private ShopService service;
+    private PhoneService service;
 
     @Autowired
     private PhoneRepository phoneRepository;
 
     @Autowired
-    public PhonesController(ShopService service){
+    public PhonesController(PhoneService service){
         this.service = service;
     }
 

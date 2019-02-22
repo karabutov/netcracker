@@ -1,5 +1,6 @@
 package com.netcracker.services;
 
+import com.netcracker.dao.PhoneDAO;
 import com.netcracker.dao.PhoneDAOImpl;
 import com.netcracker.data.DataGenerator;
 import com.netcracker.entities.Phone;
@@ -12,10 +13,10 @@ import java.util.List;
 
 
 @Service
-public class ShopService {
+public class PhoneService {
 
     @Autowired
-    private PhoneDAOImpl phoneDAO;
+    private PhoneDAO phoneDAO;
 
     public void addPhone(Phone phone){
         phoneDAO.addPhone(phone);

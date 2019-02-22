@@ -5,23 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "phone_shop.model_characteristics")
-public class PhoneFeatures {
+public class PhoneModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "model_id")
-    protected Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column
+    private Long id;
 
-    @Column(name = "model_name")
+    @Column
     private String name;
 
-    @OneToOne(mappedBy = "features")
-    private Phone phone;
+    @OneToMany(mappedBy = "model")
+    private List<Phone> phones;
 
     @Column(name = "megapixels")
     private Double numOfMegapixels;

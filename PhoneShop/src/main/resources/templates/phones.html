@@ -17,12 +17,12 @@
     </thead>
     <tbody>
     <tr th:each="prod: ${phones}">
-        <td th:text="${prod.features.name}" align="left">Features</td>
+        <td th:text="${prod.model.name}" align="left">Nmae</td>
         <td th:text="${prod.price}" align="left">Price</td>
         <td th:text="${prod.quantity}" align="left">Quantity</td>
         <td th:text="${prod.color}" align="left">Color</td>
         <td th:text="${prod.creation_data}" align="left">CreationData</td>
-        <td th:text="${prod.features.OS}" align="left">OS</td>
+        <td th:text="${prod.model.OS}" align="left">OS</td>
         <td>
             <img width="90" height="90"
                  th:src="@{'data:image/jpeg;base64,'+${prod.pictures.encodeImage()}}"/>
