@@ -56,7 +56,6 @@ public class PhoneForm {
         phone.setPrice(price);
         phone.setQuantity(quantity);
         phone.setModel(model);
-        phone.setPictures(getPicture());
         return phone;
     }
 
@@ -72,9 +71,10 @@ public class PhoneForm {
         return PhoneModel;
     }
 
-    public Picture getPicture() {
+    public Picture getPicture(Phone phone) {
         Picture picture = new Picture();
         String name = pictures.getName();
+        picture.setPhone(phone);
       /*  name = pictures.getOriginalFilename();
         name = IMAGES + pictures.getName();
         pictures.transferTo(new File(IMAGES + pictures.getName()));

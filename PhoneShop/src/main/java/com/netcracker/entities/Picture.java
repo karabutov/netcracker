@@ -3,7 +3,6 @@ package com.netcracker.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.io.IOException;

@@ -5,6 +5,7 @@ import com.netcracker.dao.PhoneDAOImpl;
 import com.netcracker.data.DataGenerator;
 import com.netcracker.entities.Phone;
 import com.netcracker.entities.Picture;
+import com.netcracker.forms.PhoneForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,20 @@ public class PhoneService {
     @Autowired
     private PhoneDAO phoneDAO;
 
-    public void addPhone(Phone phone){
-        phoneDAO.addPhone(phone);
+    public void savePhone(Phone phone){
+        phoneDAO.savePhone(phone);
     }
+
+    public Phone findPhoneWithoutPictureByModelId(Long id){
+        List<Phone> phones = phoneDAO.findPhonesByModelId(id);
+        for(Phone p : phones){
+            if(p.getPictures() == null){
+                return p;
+            }
+        }
+        return null;
+    }
+
 
     public void deletePhone(Long id){
         Phone phone = phoneDAO.findPhoneById(id);
@@ -31,21 +43,6 @@ public class PhoneService {
         return phoneDAO.findAllPhones();
     }
 
-    public void addPhones() throws Exception{
-
-        DataGenerator dataGenerator = new DataGenerator();
-        List<Picture> pictures = dataGenerator.getPictures();
-        for(Picture pic : pictures){
-            phoneDAO.addPicture(pic);
-        }
-
-
-        /*
-        List<Phone> phones = DataGenerator.getPhones();
-        for(Phone p : phones) {
-            phoneDAO.addPhone(p);
-        }*/
-    }
 
     public void deletePhones(){
         List<Phone> phones = DataGenerator.getPhones();

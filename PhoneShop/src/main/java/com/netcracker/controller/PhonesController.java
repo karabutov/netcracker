@@ -41,10 +41,6 @@ public class PhonesController {
         return "phones";
     }
 
-    @RequestMapping("/picture")
-    public void addPicture() throws Exception {
-        service.addPhones();
-    }
 
 
 /*

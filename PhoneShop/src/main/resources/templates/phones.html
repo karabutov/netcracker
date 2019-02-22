@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Phone form </title>
+    <title>Базар вокзал </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" >
 </head>
@@ -26,7 +26,7 @@
         <td>
             <img width="90" height="90"
                  th:src="@{'data:image/jpeg;base64,'+${prod.pictures.encodeImage()}}"/>
-        </td>
+        </td>-->
         <td>
             <button class="deletebutton"
             th:onclick="@{'location.href='+'\'/deletephone?phoneId='+${prod.getId()}+'\''}">
@@ -34,7 +34,7 @@
             </button>
         </td>
         <td>
-            <a th:href="@{/modifayphone(phoneId=${prod.getId()})}"
+            <a th:href="@{/modifayphone(phoneId=${prod.getId()})}" method="POST"
                class="modifylink">Modify</a>
         </td>
     </tr>

@@ -7,14 +7,16 @@ import java.util.List;
 
 public interface PhoneDAO {
 
-    void addPhone(Phone phone);
-
-    void addPicture(Picture picture);
+    void savePhone(Phone phone);
 
     void deletePhone(Phone phone);
 
     List<Phone> findAllPhones();
 
     Phone findPhoneById(Long id);
+
+    List<Phone> findPhonesByModelId(Long id);
+
+
 
 }

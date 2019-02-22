@@ -24,8 +24,7 @@ public class Phone {
     @JoinColumn(name = "model")
     private PhoneModel model;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "phone_id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "phone")
     private Picture pictures ;//= new ArrayList<>();*/
 
     @Column(name = "price")

@@ -1,15 +1,11 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Новый телефон</title>
+    <title>Изменить телефон</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" >
 </head>
-
 <body>
-
-<button class="back" th:onclick="@{'location.href='+'\'/phones'+'\''}"> Назад к списку </button>
-
-    <form th:action="@{/addphone}" th:object="${phoneForm}"  method="POST">
+    <form th:action="@{/modifayphone}" th:object="${phoneForm}"  method="POST">
         Модель<br>
         <input type="text" th:field="*{modelName}"> <br>
         Цена<br>
