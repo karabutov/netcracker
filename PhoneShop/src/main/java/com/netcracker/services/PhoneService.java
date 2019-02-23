@@ -33,6 +33,9 @@ public class PhoneService {
         return null;
     }
 
+    public void updatePhone(Phone phone){
+        phoneDAO.updatePhone(phone);
+    }
 
     public void deletePhone(Long id){
         Phone phone = phoneDAO.findPhoneById(id);
@@ -43,6 +46,10 @@ public class PhoneService {
         return phoneDAO.findAllPhones();
     }
 
+    public Phone findPhoneById(Long id){
+        Phone phone = phoneDAO.findPhoneById(id);
+        return phone == null ? null : phone;
+    }
 
     public void deletePhones(){
         List<Phone> phones = DataGenerator.getPhones();

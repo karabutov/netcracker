@@ -4,6 +4,7 @@ import com.netcracker.entities.PhoneModel;
 import com.netcracker.entities.Picture;
 import com.netcracker.utils.SessionFactoryUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +37,18 @@ public class ModelDAOImpl implements ModelDAO {
         session.save(model);
         session.getTransaction().commit();
         session.close();
-        }
+    }
+
+    @Override
+    public void updateModel(PhoneModel model){
+        Session session = SessionFactoryUtil.getSession();
+        Transaction tx = session.beginTransaction();
+        //session.load();
+        //session.evict();
+        //PhoneModel phoneModel = session.get(PhoneModel.class, model.getId());
+        //phoneModel.setMemory(16);
+        session.update(model);
+        tx.commit();
+        session.close();
+    }
 }

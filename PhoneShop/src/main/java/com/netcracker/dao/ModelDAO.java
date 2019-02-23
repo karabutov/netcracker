@@ -9,5 +9,6 @@ public interface ModelDAO {
 
     List<PhoneModel> findByName(String name);
     void saveModel(PhoneModel model);
+    void updateModel(PhoneModel model);
 
 }

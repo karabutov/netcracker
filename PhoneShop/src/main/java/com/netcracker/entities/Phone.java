@@ -20,7 +20,7 @@ public class Phone {
     @Column(name = "phone_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "model")
     private PhoneModel model;
 

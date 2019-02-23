@@ -15,21 +15,15 @@ import java.util.List;
 @RequestMapping
 public class PhonesController {
 
+    @Autowired
     private PhoneService service;
 
     @Autowired
     private PhoneRepository phoneRepository;
 
-    @Autowired
-    public PhonesController(PhoneService service){
-        this.service = service;
-    }
-
-    @RequestMapping("deletephone")
+    @RequestMapping("/deletephone")
     public String deletePhone(Model model, @RequestParam(name="phoneId")long phoneId){
         service.deletePhone(phoneId);
-        //phoneRepository.deleteById(phoneId);
-        //Iterable<Phone> phones = phoneRepository.findAll();
         return"redirect:/phones";
     }
 

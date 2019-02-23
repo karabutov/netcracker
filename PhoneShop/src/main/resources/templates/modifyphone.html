@@ -5,9 +5,15 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" >
 </head>
 <body>
+    <button class="back" th:onclick="@{'location.href='+'\'/phones'+'\''}"> Назад к списку </button>
     <form th:action="@{/modifayphone}" th:object="${phoneForm}"  method="POST">
+
+        <input type="text" th:field="*{phoneId}" hidden/>
+        <input type="text" th:field="*{modelId}" hidden/>
+        <input type="text" th:field="*{pictureId}" hidden/>
+
         Модель<br>
-        <input type="text" th:field="*{modelName}"> <br>
+        <input type="text" th:field="*{modelName}"/> <br>
         Цена<br>
         <input type="text" th:field="*{price}"> <br>
         Цвет<br>
@@ -27,8 +33,8 @@
         Оперативная память<br>
         <input type="text" th:field="*{RAM}"> <br>
         Фотография<br>
-        <input type="file" th:field="*{pictures}" multiple accept="image/*,image/jpeg"> <br> <br>
-        <button type="submit">Добавить</button>
+        <!--<input type="file" th:field="*{pictures}" multiple accept="image/*,image/jpeg"> <br>--> <br>
+        <button type="submit">Сохранить</button>
     </form>
 </body>
 </html>

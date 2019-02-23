@@ -11,14 +11,18 @@ import java.util.List;
 public class ModelService {
 
     @Autowired
-    private ModelDAO modelRepository;
+    private ModelDAO modelDAO;
 
     public PhoneModel findByName(String name) {
-        List<PhoneModel> phoneModel = modelRepository.findByName(name);
+        List<PhoneModel> phoneModel = modelDAO.findByName(name);
         return phoneModel.isEmpty() ? null : phoneModel.get(0);
     }
 
     public void saveModel(PhoneModel model) {
-        modelRepository.saveModel(model);
+        modelDAO.saveModel(model);
+    }
+
+    public void updateModel(PhoneModel phoneModel){
+        modelDAO.updateModel(phoneModel);
     }
 }

@@ -27,6 +27,16 @@ public class PhoneDAOImpl implements PhoneDAO{
    }
 
    @Override
+   public void updatePhone(Phone phone){
+      Session session = SessionFactoryUtil.getSession();
+      session.beginTransaction();
+      session.update(phone);
+      session.getTransaction().commit();
+      session.close();
+   }
+
+
+   @Override
    public void deletePhone(Phone phone) {
       Session session = SessionFactoryUtil.getSession();
       session.beginTransaction();

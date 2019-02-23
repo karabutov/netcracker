@@ -5,7 +5,8 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" >
 </head>
 <body>
-<h1>Phone</h1>
+<h1>Базар вокзал</h1>
+<a th:href="@{/newphone}">Добавить новый телефон</a>
 <table>
     <thead>
     <th>Model</th>
@@ -26,22 +27,21 @@
         <td>
             <img width="90" height="90"
                  th:src="@{'data:image/jpeg;base64,'+${prod.pictures.encodeImage()}}"/>
-        </td>-->
+        </td>
         <td>
             <button class="deletebutton"
-            th:onclick="@{'location.href='+'\'/deletephone?phoneId='+${prod.getId()}+'\''}">
-                Delete
+            th:onclick="@{'if (confirm(\'Delete this phone?\')) location.href='+'\'/deletephone?phoneId='+${prod.getId()}+'\''}">
+                Удалить
             </button>
         </td>
         <td>
-            <a th:href="@{/modifayphone(phoneId=${prod.getId()})}" method="POST"
-               class="modifylink">Modify</a>
+            <a th:href="@{/modifayphone(phoneId=${prod.getId()})}"
+               class="modifylink">Изменить</a>
         </td>
     </tr>
     </tbody>
 
-    <a th:href="@{/newphone}">Добавить новый телефон</a>
-
 </table>
+
 </body>
 </html>

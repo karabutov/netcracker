@@ -22,6 +22,12 @@ import java.time.LocalDate;
 @Setter
 public class PhoneForm {
 
+    private Long phoneId;
+
+    private Long modelId;
+
+    private Long pictureId;
+
     private String modelName;
 
     private Double numOfMegapixels;
@@ -36,8 +42,7 @@ public class PhoneForm {
 
     private Integer RAM;
 
-    private File pictures ;
-   //private MultipartFile picture;
+    private MultipartFile pictures;
 
     private Double price;
 
@@ -47,10 +52,31 @@ public class PhoneForm {
 
 
 
-    private final static String IMAGES = "/images/";
+    private final static String IMAGE = "/images/empty.jpg";
+
+    public PhoneForm(Phone phone){
+
+        PhoneModel model = phone.getModel();
+        modelId = model.getId();
+        modelName = model.getName();
+        numOfMegapixels = model.getNumOfMegapixels();
+        OS = model.getOS();
+        screenDiagonal = model.getScreenDiagonal();
+        batteryCapacity = model.getBatteryCapacity();
+        memory = model.getMemory();
+        RAM = model.getRAM();
+
+        phoneId = phone.getId();
+        price = phone.getPrice();
+        color = phone.getColor();
+        quantity = phone.getQuantity();
+
+        pictureId = phone.getPictures().getId();
+    }
 
     public Phone getPhone(PhoneModel model) {
         Phone phone = new Phone();
+        phone.setId(phoneId);
         phone.setCreation_data(LocalDate.now());
         phone.setColor(color);
         phone.setPrice(price);
@@ -60,33 +86,31 @@ public class PhoneForm {
     }
 
     public PhoneModel getPhoneModel(){
-        PhoneModel PhoneModel = new PhoneModel();
-        PhoneModel.setName(modelName);
-        PhoneModel.setScreenDiagonal(screenDiagonal);
-        PhoneModel.setOS(OS);
-        PhoneModel.setBatteryCapacity(batteryCapacity);
-        PhoneModel.setMemory(memory);
-        PhoneModel.setNumOfMegapixels(numOfMegapixels);
-        PhoneModel.setRAM(RAM);
-        return PhoneModel;
+        PhoneModel phoneModel = new PhoneModel();
+        phoneModel.setId(modelId);
+        phoneModel.setName(modelName);
+        phoneModel.setScreenDiagonal(screenDiagonal);
+        phoneModel.setOS(OS);
+        phoneModel.setBatteryCapacity(batteryCapacity);
+        phoneModel.setMemory(memory);
+        phoneModel.setNumOfMegapixels(numOfMegapixels);
+        phoneModel.setRAM(RAM);
+        return phoneModel;
     }
 
     public Picture getPicture(Phone phone) {
         Picture picture = new Picture();
-        String name = pictures.getName();
+        picture.setId(pictureId);
         picture.setPhone(phone);
-      /*  name = pictures.getOriginalFilename();
-        name = IMAGES + pictures.getName();
-        pictures.transferTo(new File(IMAGES + pictures.getName()));
-    */
         try {
-            picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource("/images/empty.jpg").toURI())));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+            if(pictures == null){
+                picture.setPictureBin(pictures.getBytes());
+            } else{
+                picture.setPictureBin(Files.readAllBytes(Paths.get(this.getClass().getResource(IMAGE).toURI())));
+            }
+        } catch (Exception e) {
+            return picture;
         }
-
         return picture;
     }
 
